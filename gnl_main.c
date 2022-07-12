@@ -2,7 +2,10 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-char get_next_line(int fd);
+char *get_next_line(int fd)
+{
+    return (fd);
+}
 
 int main ()
 {

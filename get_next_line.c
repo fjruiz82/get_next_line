@@ -17,9 +17,11 @@
 char	*get_next_line(int fd)
 {
     char *buf;
+    static char *tmp;
     size_t nbytes;
     size_t BUFFER_SIZE;
     int text_len;
+    int i;
 
 
     buf = malloc(sizeof * buf * (BUFFER_SIZE + 1));
@@ -27,9 +29,16 @@ char	*get_next_line(int fd)
         return (NULL);
 
     text_len = read (fd, buf, BUFFER_SIZE);
+    i = 0;
     while (text_len != 0)
     {
-        
+        if (text_len == -1)
+        {
+            free (buf);
+            return (0);
+        }
+        i++;
+
     }
 
     
