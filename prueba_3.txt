@@ -1,0 +1,8 @@
+A Function to Save the Extra Read Characters
+
+As with the previous function, by the time we call this function, we know that there is a \n in the static variable. If we have reached the end of the file, there is no need to call this function because we will end up returning the last line with the previous function. We must now “reset” the static variable by taking all the characters after the \n:
+
+    measure the size of the string in the static variable, minus the number of characters until the \n (included!), + 1 for the final \0,
+    malloc a string of that size,
+    copy the characters and add the final \0,
+    return the new malloc’d string.

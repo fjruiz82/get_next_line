@@ -1,0 +1,8 @@
+A Function to Get the Line to Return
+
+If this function is called, it means we know for a fact that there is a \n in the static variable (or that there is nothing left to read in the file). We will extract the characters up to the \n to get the line we must later return:
+
+    count the number of characters to and including the \n if there is one,
+    malloc a string of the counted size, + 1 for the final \0,
+    copy the characters until the \n or the \0 and add the final \0,
+    return the malloc’d string.

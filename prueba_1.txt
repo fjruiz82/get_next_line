@@ -1,0 +1,9 @@
+A Function to Read From the File Descriptor
+
+This function will read from the file descriptor in a loop until we detect a \n or the end of the file:
+
+    create a reading loop that stops when the read function returns 0, which means we are at the end of the file and there is nothing left to read,
+        read from the file descriptor,
+        if read returns -1, there was an error, free all allocated memory and stop everything,
+        save the read characters in a static variable (strjoin the buffer to the static),
+        check to see if there is a \n in the static variable: if yes, stop the loop, if no, continue.
