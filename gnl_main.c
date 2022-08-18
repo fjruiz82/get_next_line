@@ -33,7 +33,20 @@ int	main()
 	return (0);
 }
 
-/*int main (int *argv, char *argc)
+/*int main (int *argc, char **argc)
 {
+	int fd;
+    char *line;
 
+    (void)argc; //casteo para evitar warnings del compilador.
+
+    fd = open(argv[1], O_RDONLY); // abre el archivo dado como un argumento 
+    line = ""; // inicializa esta variable para poder usarla en el siguiente bucle
+    while (line != NULL)
+    {
+        line = get_next_line(fd);
+        printf("%s", line); // Se omite cada \n pq gnl se supone lo incluye en cada línea.
+    }
+    fd = close(fd);
+    return (0);
 }*/
