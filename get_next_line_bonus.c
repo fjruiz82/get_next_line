@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fruiz-ca <fruiz-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 07:15:24 by fruiz-ca          #+#    #+#             */
-/*   Updated: 2022/08/31 08:57:03 by fruiz-ca         ###   ########.fr       */
+/*   Created: 2022/08/30 09:51:51 by fruiz-ca          #+#    #+#             */
+/*   Updated: 2022/08/31 08:57:02 by fruiz-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*reserve_line(char *reserved)
 {
@@ -93,15 +93,15 @@ char	*reading_fd(int fd, char *reserved)
 
 char	*get_next_line(int fd)
 {
-	static char	*reserved;
+	static char	*reserved[1024];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (0);
-	reserved = reading_fd(fd, reserved);
-	if (!reserved)
+	reserved[fd] = reading_fd(fd, reserved[fd]);
+	if (!reserved[fd])
 		return (0);
-	line = reserve_line(reserved);
-	reserved = save_rest(reserved);
+	line = reserve_line(reserved[fd]);
+	reserved[fd] = save_rest(reserved[fd]);
 	return (line);
 }
